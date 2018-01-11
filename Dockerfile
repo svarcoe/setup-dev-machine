@@ -10,7 +10,9 @@ RUN apt-get update -q &&	\
     apt-get install -q -y  	\
 	curl			\
 	sudo			\
-	lsb-release
+	lsb-release		\
+	wget			\
+	apt-utils		
 
 # setup apt for gcloud
 RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
