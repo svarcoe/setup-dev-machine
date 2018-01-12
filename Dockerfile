@@ -33,6 +33,10 @@ RUN apt-get install -q -y 	\
 	python-pip		\
 	docker.io		\
    && apt-get clean -q -y
+   
+RUN curl https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
+RUN tar -x exa-linux-x86_64-0.8.0.zip 
+RUN mv exa-linux-x86_64-0.8.0/exa-linux-x86_64 /usr/bin/local/exa
 
 # install oh my zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
