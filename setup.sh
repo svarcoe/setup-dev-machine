@@ -42,4 +42,4 @@ export ls='exa -bhl --git'
 wget https://github.com/koki/short/releases/download/v0.4.0/short_linux_amd64
 mv short_linux_amd64 /usr/local/bin/short
 
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/bash
