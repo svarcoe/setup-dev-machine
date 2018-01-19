@@ -5,42 +5,8 @@ ARG ROOTFS_PATH
 RUN mkdir setup-dev-machine
 WORKDIR setup-dev-machine
 
-# install tools
-RUN apt-get update -q &&	\
-    apt-get install -q -y  	\
-	curl			\
-	sudo			\
-	lsb-release		\
-	wget			\
-	apt-utils		
-
-# setup apt for gcloud
-RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
-    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-
-# setup for nodejs
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-
-RUN apt-get install -q -y 	\
-	build-essential 	\
-	checkinstall	 	\
-	nodejs 			\
-	zsh 			\
-	git 			\
-	google-cloud-sdk 	\
-	python 			\
-	python-pip		\
-	docker.io		\
-	unzip			\
-   && apt-get clean -q -y
-   
-RUN wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
-RUN unzip exa-linux-x86_64-0.8.0.zip 
-RUN mv exa-linux-x86_64 /usr/bin/local/exa
-
-# install oh my zsh
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+COPY setup.sh .
+RUN ./setup.sh
 
 COPY $ROOTFS_PATH/.config /root/.config
 
