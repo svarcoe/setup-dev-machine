@@ -8,11 +8,12 @@ apt-get install -q -y 	\
 	lsb-release	\
 	wget		\
 	apt-utils	\
-	unzip
+	unzip		\
+	apt-transport-https
 
 
-export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
-	echo 'deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main' | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+export CLOUD_SDK_REPO='cloud-sdk-$(lsb_release -c -s)'
+echo 'deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main' | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
@@ -25,12 +26,12 @@ apt-get install -q -y 		\
 	nodejs			\
 	zsh			\
 	git			\
-	google-cloud-sdk	\
 	python			\
 	python-pip		\
 	docker.io		\
-	unzip			\
+	unzip			
 
+apt-get install google-cloud-sdk -q -y
 apt-get clean -q -y
 
 
@@ -39,7 +40,9 @@ unzip exa-linux-x86_64-0.8.0.zip
 mv exa-linux-x86_64 /usr/local/bin/exa
 export ls='exa -bhl --git'
 
-wget https://github.com/koki/short/releases/download/v0.4.0/short_linux_amd64
+wget https://github.com/koki/short/releases/download/v0.4.0/short_linux_amd64 -q
 mv short_linux_amd64 /usr/local/bin/short
 
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/bash
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -q
+apt list --installed
+/usr/bin/zsh ./install.sh
