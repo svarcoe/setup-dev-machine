@@ -1,19 +1,4 @@
-mkdir setup-dev-machine
-cd setup-dev-machine
-
-apt-get update -q
-apt-get install -q -y 	\
-	curl		\
-	sudo 		\
-	lsb-release	\
-	wget		\
-	apt-utils	\
-	unzip		\
-	apt-transport-https
-
-
-export CLOUD_SDK_REPO='cloud-sdk-$(lsb_release -c -s)'
-echo 'deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main' | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
