@@ -11,5 +11,8 @@ COPY setup.sh .
 RUN chmod +x ./setup.sh
 RUN ./setup.sh
 
+COPY .gitconfig /root
+COPY .zshrc /root
+
 CMD ["/usr/bin/zsh"]
 
