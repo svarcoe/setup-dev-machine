@@ -30,4 +30,4 @@ mv short_linux_amd64 /usr/local/bin/short
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -q
 apt list --installed
-/usr/bin/zsh ./install.sh
+sh -c ./install.sh

@@ -4,7 +4,7 @@ RUN mkdir setup-dev-machine
 WORKDIR setup-dev-machine
 
 COPY init.sh .
-RUN chmod + x ./init.sh
+RUN chmod +x ./init.sh
 RUN ./init.sh
 
 COPY setup.sh .
