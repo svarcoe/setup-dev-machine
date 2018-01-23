@@ -38,4 +38,4 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -q
 chmod +x ./install.sh
 TERM=linux sh -ex -c ./install.sh || true
 
-echo 'Done installing.
+echo 'Done installing.'
