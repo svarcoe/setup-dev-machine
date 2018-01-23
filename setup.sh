@@ -5,7 +5,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
-apt-get install -q -y 		\
+DEBIAN_FRONTEND=noninteractive apt-get install -q -y 		\
 	build-essential		\
 	checkinstall		\
 	nodejs			\
