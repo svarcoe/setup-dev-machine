@@ -29,5 +29,5 @@ wget https://github.com/koki/short/releases/download/v0.4.0/short_linux_amd64 -q
 mv short_linux_amd64 /usr/local/bin/short
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -q
-apt list --installed
+chmod +x ./install.sh
 sh -c ./install.sh
