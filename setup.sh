@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
@@ -21,17 +21,21 @@ DEBIAN_FRONTEND=noninteractive apt-get install -q -y 		\
 
 apt-get clean -q -y
 
-
-wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
+echo 'Installing exa...'
+wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip -q
 unzip exa-linux-x86_64-0.8.0.zip
 mv exa-linux-x86_64 /usr/local/bin/exa
 chmod +x /usr/local/bin/exa
 export ls='exa -bhl --git'
 
+echo 'Installing koki short....'
 wget https://github.com/koki/short/releases/download/v0.4.0/short_linux_amd64 -q
 mv short_linux_amd64 /usr/local/bin/short
 chmod +x /usr/local/bin/short
 
+echo 'Installing oh-my-zsh...'
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -q
 chmod +x ./install.sh
-sh -c ./install.sh
+TERM=linux sh -ex -c ./install.sh || true
+
+echo 'Done installing.
